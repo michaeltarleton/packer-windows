@@ -32,6 +32,7 @@ The following Windows versions are known to work (built with VMware Fusion Pro
 * Windows Server 2022 Desktop -> Vagrant Cloud box [StefanScherer/windows_2022](https://app.vagrantup.com/StefanScherer/boxes/windows_2022)
 * Windows Server 2019 Desktop -> Vagrant Cloud box [StefanScherer/windows_2019](https://app.vagrantup.com/StefanScherer/boxes/windows_2019)
 * Windows Server Core
+  * Windows Server 2022 without and with Docker -> Vagrant Cloud box [StefanScherer/windows_2022_docker](https://app.vagrantup.com/StefanScherer/boxes/windows_2022_docker)
   * Windows Server 2019 without and with Docker -> Vagrant Cloud box [StefanScherer/windows_2019_docker](https://app.vagrantup.com/StefanScherer/boxes/windows_2019_docker)
   * Windows Server 1709, 1803, 1809, 1903, 1909, and 2004 all without and with Docker
   * Windows Server InsiderPreview Semi-Annual without and with Docker
@@ -236,6 +237,20 @@ packer build --only=parallels-iso windows_2019_docker.json
 The Parallels builder config turns `efi boot` off in order to use the same answer file like all the other builders. If you find you need to turn `efi boot` on then make sure to adjust the appropriate answer file, especially the section regarding the partitioning of the disk.
 If you need to further customize the VM, consult the documentation at https://www.packer.io/docs/builders/parallels-iso.html. 
 
+
+### VirtualBox support
+
+When using VirtualBox, you can use the following sample command to build a
+corresponding VM image:
+
+```
+packer build --only=virtualbox-iso windows_2022_docker.json
+```
+
+After building, you can expect a box package like `windows_2022_docker_virtualbox.box`
+in the working directory.
+
+
 ### Using .box Files With Vagrant
 
 The generated box files include a Vagrantfile template that is suitable for use
@@ -251,4 +266,4 @@ vagrant up --provider hyperv
 
 ### Contributing
 
-Pull request are welcome!
+Pull requests are welcome!

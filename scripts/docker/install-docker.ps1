@@ -1,6 +1,6 @@
 ﻿# use docker_provider:  "ee", "ce", "master" or ""
 $docker_provider = "ce"
-$docker_version = "20.10.7"
+$docker_version = "20.10.17"
 if (Test-Path env:docker_provider) {
   $docker_provider = $env:docker_provider
 }

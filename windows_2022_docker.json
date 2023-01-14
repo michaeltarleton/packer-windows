@@ -19,11 +19,11 @@
       "iso_checksum": "{{user `iso_checksum`}}",
       "iso_url": "{{user `iso_url`}}",
       "memory": "{{user `memory`}}",
-      "output_directory": "windows_2019_docker-qemu",
+      "output_directory": "windows_2022_docker-qemu",
       "qemuargs": [
         [
           "-drive",
-          "file=windows_2019_docker-qemu/{{ .Name }},if=virtio,cache=writeback,discard=ignore,format=qcow2,index=1"
+          "file=windows_2022_docker-qemu/{{ .Name }},if=virtio,cache=writeback,discard=ignore,format=qcow2,index=1"
         ],
         [
           "-drive",
@@ -32,7 +32,7 @@
       ],
       "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
       "type": "qemu",
-      "vm_name": "WindowsServer2019Docker",
+      "vm_name": "WindowsServer2022Docker",
       "winrm_password": "vagrant",
       "winrm_timeout": "{{user `winrm_timeout`}}",
       "winrm_username": "vagrant"
@@ -61,7 +61,7 @@
       "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
       "switch_name": "{{user `hyperv_switchname`}}",
       "type": "hyperv-iso",
-      "vm_name": "WindowsServer2019Docker",
+      "vm_name": "WindowsServer2022Docker",
       "winrm_password": "vagrant",
       "winrm_timeout": "{{user `winrm_timeout`}}",
       "winrm_username": "vagrant"
@@ -90,7 +90,7 @@
       "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
       "type": "vmware-iso",
       "version": 14,
-      "vm_name": "WindowsServer2019Docker",
+      "vm_name": "WindowsServer2022Docker",
       "vmx_data": {
         "RemoteDisplay.vnc.enabled": "false",
         "RemoteDisplay.vnc.port": "5900",
@@ -117,7 +117,7 @@
         "./scripts/microsoft-updates.bat",
         "./scripts/win-updates.ps1"
       ],
-      "guest_os_type": "win-2019",
+      "guest_os_type": "win-2022",
       "iso_checksum": "{{user `iso_checksum`}}",
       "iso_url": "{{user `iso_url`}}",
       "memory": "{{user `memory`}}",
@@ -139,7 +139,7 @@
       ],
       "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
       "type": "parallels-iso",
-      "vm_name": "WindowsServer2019Docker",
+      "vm_name": "WindowsServer2022Docker",
       "winrm_password": "vagrant",
       "winrm_timeout": "{{user `winrm_timeout`}}",
       "winrm_username": "vagrant"
@@ -167,7 +167,7 @@
       "post_shutdown_delay": "10s",
       "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
       "type": "virtualbox-iso",
-      "vm_name": "WindowsServer2019Docker",
+      "vm_name": "WindowsServer2022Docker",
       "winrm_password": "vagrant",
       "winrm_timeout": "{{user `winrm_timeout`}}",
       "winrm_username": "vagrant"
@@ -176,7 +176,7 @@
   "post-processors": [
     {
       "keep_input_artifact": false,
-      "output": "windows_2019_docker_{{.Provider}}.box",
+      "output": "windows_2022_docker_{{.Provider}}.box",
       "type": "vagrant",
       "vagrantfile_template": "vagrantfile-windows_2016.template"
     }
@@ -231,17 +231,17 @@
     }
   ],
   "variables": {
-    "autounattend": "./answer_files/2019_core/Autounattend.xml",
+    "autounattend": "./answer_files/2022_core/Autounattend.xml",
     "disk_size": "81920",
     "disk_type_id": "1",
     "memory": "2048",
-    "docker_images": "mcr.microsoft.com/windows/nanoserver:1809 mcr.microsoft.com/windows/servercore:ltsc2019 mcr.microsoft.com/windows/servercore:1809 mcr.microsoft.com/windows:1809",
+    "docker_images": "mcr.microsoft.com/windows/nanoserver:ltsc2022 mcr.microsoft.com/windows/servercore:ltsc2022",
     "docker_provider": "ce",
     "docker_version": "20.10.17",
     "headless": "false",
-    "iso_checksum": "sha256:549bca46c055157291be6c22a3aaaed8330e78ef4382c99ee82c896426a1cee1",
-    "iso_url": "https://software-download.microsoft.com/download/pr/17763.737.190906-2324.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us_1.iso",
-    "manually_download_iso_from": "https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2019",
+    "iso_checksum": "sha256:4f1457c4fe14ce48c9b2324924f33ca4f0470475e6da851b39ccbf98f44e7852",
+    "iso_url": "https://software-download.microsoft.com/download/sg/20348.169.210806-2348.fe_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso",
+    "manually_download_iso_from": "https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2022",
     "restart_timeout": "5m",
     "vhv_enable": "false",
     "winrm_timeout": "6h"
